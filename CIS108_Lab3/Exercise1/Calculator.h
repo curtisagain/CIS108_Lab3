@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
-using namespace std;
+namespace Calculate
 {
-public:
-	double Calculate(double num1, char op, double num2);
-};
+	double add(double, double);
+	double subtract(double, double);
+	double multiply(double, double);
+	double divide(double, double);
+}
