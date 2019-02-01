@@ -2,20 +2,36 @@
 #include <conio.h>
 #include "Calculator.h"
 using namespace std;
+double answer;
 
-float Calculate (double num1, char op, double num2)
+
+double Calculate::add(double num1, double num2)
 {
-	switch (op)
-	{
-	case '+':
-		return num1 + num2;
-	case '-':
-		return num1 - num2;
-	case '*':
-		return num1 * num2;
-	case '/':
-		return num1 / num2;
-	default:
-		return 0;
-	}
+	cout << num1 + num2;
+	answer = num1 + num2;
+	return answer;
+}
+
+double Calculate::subtract(double num1, double num2)
+{
+	cout  << num1 - num2;
+	answer = num1 - num2;
+	return answer;
+	
+}
+
+double Calculate::multiply(double num1, double num2)
+{
+	
+	cout << num1 * num2;
+	answer = num1 * num2;
+	return answer;
+	
+}
+
+double Calculate::divide(double num1, double num2)
+{
+	cout << num1 / num2;
+	answer = num1 / num2;
+	return answer;
 }
