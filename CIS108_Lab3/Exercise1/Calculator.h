@@ -9,7 +9,7 @@ namespace Calculate
 	double divide(double num1, double num2);
 	double power(double num1, double num2);
 	void save(double input_number);
-	double recall(); //these two functions don't need outputs.
+	double recall();
 	void memClear();
 	double invertSign(double input_number);
 }
