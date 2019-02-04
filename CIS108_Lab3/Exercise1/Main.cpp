@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <conio.h>
 #include "Calculator.h"
@@ -12,8 +14,8 @@ using namespace std;
 	char op;		
 	int num_now = 1;
 	char char_key;
-	string keys_typed = "";
-	string second_keys_typed = "";
+	string entry1 = "";
+	string entry2 = "";
 
 
 int main()
@@ -25,22 +27,22 @@ int main()
 		char_key = char(_getch());
 
 		switch (char_key)
-		{
+		{// use string for numbers at this point so adding them concatenates into longer number.
 			case '1': case '2': case'3': case '4': case '5': case '6': case '7': case '8': case '9': case '0': case'.':
 				cout << char_key;
 				if (num_now == 1)
-					keys_typed += char_key;
+					entry1 += char_key;
 				else
-					second_keys_typed += char_key;
+					entry2 += char_key;
 				break;
 
 			case '*': case '+': case '-': case '/': case '^':
 				if (num_now == 1)
 				{
-					num1 = stod(keys_typed);
+					num1 = stod(entry1);
 					num_now = 2;
-					keys_typed = "";
-					second_keys_typed = "";
+					entry1 = "";
+					entry2 = "";
 				}
 				cout << char_key;
 				op = char_key;
@@ -63,14 +65,15 @@ int main()
 				break;
 
 			case 'i': case 'I':
-				num1 = Calculate::invertSign(stod(keys_typed));
+				cout << endl << "> Inverted";
+				num1 = Calculate::invertSign(stod(entry1));
 				cout << endl << num1;
 				break;
 
 			case 'c': case 'C':
 				cout << endl << "> Clear.";
-				keys_typed = "";
-				second_keys_typed = "";
+				entry1 = "";
+				entry2 = "";
 				num1 = 0;
 				num2 = 0;
 				num_now = 1;
@@ -78,11 +81,11 @@ int main()
 
 			case char(13) :
 							cout << endl;
-							if (second_keys_typed != "")
-							{
-									num2 = stod(second_keys_typed);
+							if (entry2 != "")
+							{// stod reads string for input that can be converted to a float
+									num2 = stod(entry2);
 									switch (op)
-									{
+									{// calls functions from the namespace in header, goes through function in calculator.cpp.
 										case '+':
 											num1 = Calculate::add(num1, num2);
 											break;
@@ -103,8 +106,8 @@ int main()
 									}
 							}
 						cout << num1 << endl << "> ";
-						keys_typed = to_string(num1);
-						second_keys_typed = "";
+						entry1 = to_string(num1);
+						entry2 = "";
 						num_now = 1;
 						break;
 
@@ -113,6 +116,7 @@ int main()
 		}
 
 	} while (char_key != 'x' && char_key != 'X');
-		cout << "Bye.";
+	// do above loop while char does not equal x.
+		cout << "Goodbye.";
 		return 0;
 }
